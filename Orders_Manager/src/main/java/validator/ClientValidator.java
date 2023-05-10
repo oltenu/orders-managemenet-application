@@ -1,9 +1,7 @@
 package validator;
 
-import lombok.Data;
 import model.Client;
 
-@Data
 public class ClientValidator {
     private long currentId = -1;
 
