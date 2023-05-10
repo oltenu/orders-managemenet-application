@@ -1,4 +1,6 @@
 package data.access;
 
-public class OrderDAO {
+import model.Order;
+
+public class OrderDAO extends AbstractDAO<Order> {
 }

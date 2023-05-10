@@ -1,4 +1,6 @@
 package data.access;
 
-public class ProductDAO {
+import model.Product;
+
+public class ProductDAO extends AbstractDAO<Product> {
 }
