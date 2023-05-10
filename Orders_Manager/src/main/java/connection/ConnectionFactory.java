@@ -7,7 +7,7 @@ public class ConnectionFactory {
     private static final String DBURL = "jdbc:mysql://localhost:3306/schooldb";
     private static final String USER = "root";
     private static final String PASS = "root";
-    private static ConnectionFactory singleInstance = new ConnectionFactory();
+    private static final ConnectionFactory singleInstance = new ConnectionFactory();
 
     private ConnectionFactory(){
         try{
