@@ -1,20 +1,20 @@
 package validator;
 
-import model.Order;
+import data.access.AbstractDAO;
+import model.OrderM;
 import model.Product;
 
 public class OrderValidator {
-    private long currentId = 0;
-
-    public boolean validateOrder(Order order, Product product){
-        if (order.getAmount() > 0 && order.getAmount() <= product.getAmount()){
-            product.setAmount(product.getAmount() - order.getAmount());
+    public boolean validateOrder(OrderM orderM, Product product) {
+        if (orderM.getAmount() > 0 && orderM.getAmount() <= product.getAmount()) {
+            product.setAmount(product.getAmount() - orderM.getAmount());
             return true;
         }
         return false;
     }
 
-    public long getCurrentId(){
-        return currentId++;
+    public long getCurrentId() {
+        long currentId = AbstractDAO.selectMaxId(2);
+        return ++currentId;
     }
 }

@@ -1,9 +1,10 @@
 package validator;
 
-public class BillValidator {
-    private long currentId = 0;
+import data.access.AbstractDAO;
 
-    public long getCurrentId(){
-        return currentId++;
+public class BillValidator {
+    public long getCurrentId() {
+        long currentId = AbstractDAO.selectMaxId(0);
+        return ++currentId;
     }
 }

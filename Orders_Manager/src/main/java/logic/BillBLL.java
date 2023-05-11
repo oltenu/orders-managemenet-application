@@ -11,25 +11,26 @@ public class BillBLL {
     private final BillDAO billDAO;
     private Bill bill;
 
-    public BillBLL(){
+    public BillBLL() {
         billValidator = new BillValidator();
         billDAO = new BillDAO();
     }
 
     public Bill createBill(Product product, int amount) {
         double price = amount * product.getPrice();
-        return new Bill(billValidator.getCurrentId(), price);
+        bill = new Bill(billValidator.getCurrentId(), price);
+        return bill;
     }
 
-    public void saveBill(){
+    public void saveBill() {
         billDAO.insert(bill);
     }
 
-    public Bill findBill(long id){
+    public Bill findBill(long id) {
         return billDAO.findById(id);
     }
 
-    public List<Bill> findAllBills(){
+    public List<Bill> findAllBills() {
         return billDAO.findAll();
     }
 }

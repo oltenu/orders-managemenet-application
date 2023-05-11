@@ -1,6 +1,6 @@
 package data.access;
 
-import model.Client;
+import model.ClientM;
 
-public class ClientDAO extends AbstractDAO<Client>{
+public class ClientDAO extends AbstractDAO<ClientM> {
 }

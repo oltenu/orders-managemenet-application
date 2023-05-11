@@ -1,15 +1,15 @@
 package validator;
 
-import model.Client;
+import data.access.AbstractDAO;
+import model.ClientM;
 
 public class ClientValidator {
-    private long currentId = -1;
-
-    public boolean validateClient(Client client){
-        return client.getAge() >= 16;
+    public boolean validateClient(ClientM clientM) {
+        return clientM.getAge() >= 16;
     }
 
-    public long getCurrentId(){
-        return currentId++;
+    public long getCurrentId() {
+        long currentId = AbstractDAO.selectMaxId(1);
+        return ++currentId;
     }
 }

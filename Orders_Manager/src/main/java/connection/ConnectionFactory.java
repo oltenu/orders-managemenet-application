@@ -9,55 +9,55 @@ public class ConnectionFactory {
     private static final String PASS = "root";
     private static final ConnectionFactory singleInstance = new ConnectionFactory();
 
-    private ConnectionFactory(){
-        try{
+    private ConnectionFactory() {
+        try {
             Class.forName(DRIVER);
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Connection createConnection(){
+    private Connection createConnection() {
         Connection connection = null;
 
         try {
             connection = DriverManager.getConnection(DBURL, USER, PASS);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return connection;
     }
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         return singleInstance.createConnection();
     }
 
-    public static void closeConnection(Connection connection){
-        if(connection != null){
-            try{
+    public static void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
                 connection.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void closeStatement(Statement statement){
-        if(statement != null){
-            try{
+    public static void closeStatement(Statement statement) {
+        if (statement != null) {
+            try {
                 statement.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void closeResultSet(ResultSet resultSet){
-        if(resultSet != null){
-            try{
+    public static void closeResultSet(ResultSet resultSet) {
+        if (resultSet != null) {
+            try {
                 resultSet.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

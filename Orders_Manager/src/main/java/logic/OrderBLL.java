@@ -2,8 +2,8 @@ package logic;
 
 import data.access.OrderDAO;
 import model.Bill;
-import model.Client;
-import model.Order;
+import model.ClientM;
+import model.OrderM;
 import model.Product;
 import validator.OrderValidator;
 
@@ -13,31 +13,31 @@ public class OrderBLL {
     private final OrderValidator orderValidator;
     private final OrderDAO orderDAO;
 
-    public OrderBLL(){
+    public OrderBLL() {
         orderValidator = new OrderValidator();
         orderDAO = new OrderDAO();
     }
 
-    public boolean insertOrder(Product product, Client client, BillBLL billBLL, int amount){
+    public boolean insertOrder(Product product, ClientM clientM, BillBLL billBLL, int amount) {
         Bill bill = billBLL.createBill(product, amount);
-        Order order = new Order(orderValidator.getCurrentId(), product.getId(), client.getId(), bill.id(), amount);
-        if(!orderValidator.validateOrder(order, product))
+        OrderM orderM = new OrderM(orderValidator.getCurrentId(), product.getId(), clientM.getId(), bill.id(), amount);
+        if (!orderValidator.validateOrder(orderM, product))
             return false;
-        orderDAO.insert(order);
+        orderDAO.insert(orderM);
         billBLL.saveBill();
 
         return true;
     }
 
-    public Order findOrder(long id){
+    public OrderM findOrder(long id) {
         return orderDAO.findById(id);
     }
 
-    public List<Order> findAllOrders(){
+    public List<OrderM> findAllOrders() {
         return orderDAO.findAll();
     }
 
-    public void deleteOrder(long id){
+    public void deleteOrder(long id) {
         orderDAO.delete(id);
     }
 }

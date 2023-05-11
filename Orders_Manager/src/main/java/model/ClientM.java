@@ -3,7 +3,7 @@ package model;
 import lombok.Data;
 
 @Data
-public class Client {
+public class ClientM {
     private long id;
     private String firstName;
     private String lastName;
@@ -11,10 +11,11 @@ public class Client {
     private String address;
     private String cnp;
 
-    public Client() {
+    public ClientM() {
+
     }
 
-    public Client(long id, String firstName, String lastName, int age, String address, String cnp) {
+    public ClientM(long id, String firstName, String lastName, int age, String address, String cnp) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
