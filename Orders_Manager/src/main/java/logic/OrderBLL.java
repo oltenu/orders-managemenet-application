@@ -18,12 +18,17 @@ public class OrderBLL {
         orderDAO = new OrderDAO();
     }
 
-    public boolean insertOrder(Product product, ClientM clientM, BillBLL billBLL, int amount) {
+    public boolean insertOrder(Product product, ClientM clientM, BillBLL billBLL, ProductBLL productBLL, int amount) {
         Bill bill = billBLL.createBill(product, amount);
         OrderM orderM = new OrderM(orderValidator.getCurrentId(), product.getId(), clientM.getId(), bill.id(), amount);
-        if (!orderValidator.validateOrder(orderM, product))
+        if (!orderValidator.validateOrder(orderM, product)){
+            System.out.println("asasf");
             return false;
+        }
         orderDAO.insert(orderM);
+        int newAmount = product.getAmount() - amount;
+        product.setAmount(newAmount);
+        productBLL.updateProduct(product.getId(), product.getProductName(), product.getAmount(), product.getPrice(), product.getManufacturer());
         billBLL.saveBill();
 
         return true;

@@ -1,6 +1,5 @@
 package model;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import lombok.Data;
 
 @Data
