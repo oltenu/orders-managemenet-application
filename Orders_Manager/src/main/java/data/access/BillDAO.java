@@ -7,47 +7,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BillDAO{
-    public Bill findById(long id){
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        String query = "SELECT * FROM Bill WHERE id = ?";
-        try{
-            connection = ConnectionFactory.getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setLong(1, id);
-
-            resultSet = statement.executeQuery();
-            resultSet.next();
-
-            int price = resultSet.getInt(2);
-
-            return new Bill(id, price);
-        }catch (SQLException e){
-            e.printStackTrace();
-        }finally {
-            ConnectionFactory.closeConnection(connection);
-            ConnectionFactory.closeStatement(statement);
-            ConnectionFactory.closeResultSet(resultSet);
-        }
-
-        return null;
-    }
-
-    public List<Bill> findAll(){
+/**
+ * Data access class for Bill Immutable Class.
+ */
+public class BillDAO {
+    public List<Bill> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<Bill> bills = new ArrayList<>();
         String query = "SELECT * FROM Bill";
-        try{
+        try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(query);
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 long id = resultSet.getLong(1);
                 int price = resultSet.getInt(2);
 
@@ -55,9 +31,9 @@ public class BillDAO{
             }
 
             return bills;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             ConnectionFactory.closeConnection(connection);
             ConnectionFactory.closeStatement(statement);
             ConnectionFactory.closeResultSet(resultSet);
@@ -66,22 +42,22 @@ public class BillDAO{
         return null;
     }
 
-    public void insert(Bill bill){
+    public void insert(Bill bill) {
         Connection connection = null;
         PreparedStatement statement = null;
         String query = "INSERT INTO Bill (id, price) VALUES ('" +
-                    bill.id() +
-                    "', '" +
-                    bill.price() +
-                    "')";
+                bill.id() +
+                "', '" +
+                bill.price() +
+                "')";
 
-        try{
+        try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(query);
             statement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             ConnectionFactory.closeConnection(connection);
             ConnectionFactory.closeStatement(statement);
         }

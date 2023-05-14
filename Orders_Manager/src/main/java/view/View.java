@@ -116,23 +116,23 @@ public class View extends JFrame {
     }
 
     //listeners
-    public void addHomeMenuListener(ActionListener a){
+    public void addHomeMenuListener(ActionListener a) {
         homeMenuItem.addActionListener(a);
     }
 
-    public void addProductMenuListener(ActionListener a){
+    public void addProductMenuListener(ActionListener a) {
         productMenuItem.addActionListener(a);
     }
 
-    public void addClientMenuListener(ActionListener a){
+    public void addClientMenuListener(ActionListener a) {
         clientMenuItem.addActionListener(a);
     }
 
-    public void addOrderMenuItemListener(ActionListener a){
+    public void addOrderMenuItemListener(ActionListener a) {
         orderMenuItem.addActionListener(a);
     }
 
-    public void addBillMenuItemListener(ActionListener a){
+    public void addBillMenuItemListener(ActionListener a) {
         billMenuItem.addActionListener(a);
     }
 }

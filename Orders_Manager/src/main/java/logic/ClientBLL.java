@@ -6,6 +6,10 @@ import validator.ClientValidator;
 
 import java.util.List;
 
+/**
+ * Business logic class of ClientM class.
+ * Contains a validator and a data access object.
+ */
 public class ClientBLL {
     private final ClientValidator clientValidator;
     private final ClientDAO clientDAO;

@@ -1,10 +1,7 @@
 package view;
 
 import logic.*;
-import model.Bill;
-import model.ClientM;
-import model.OrderM;
-import model.Product;
+import model.*;
 
 import java.awt.event.*;
 import java.lang.reflect.Field;
@@ -140,13 +137,13 @@ public class Controller {
     class DeleteClientButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             String idString = view.clientPanel.getIdEdit();
-            if(!idString.equals("")){
+            if (!idString.equals("")) {
                 long id = Long.parseLong(idString);
 
                 clientBLL.deleteClient(id);
 
                 refreshClientPanel();
-            }else {
+            } else {
                 view.clientPanel.showErrorDialog();
             }
         }
@@ -215,11 +212,11 @@ public class Controller {
     class DeleteProductButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             String idString = view.productPanel.getIdEdit();
-            if(!idString.equals("")){
+            if (!idString.equals("")) {
                 long id = Long.parseLong(idString);
                 productBLL.deleteProduct(id);
                 refreshProductPanel();
-            }else{
+            } else {
                 view.productPanel.showErrorDialog();
             }
         }

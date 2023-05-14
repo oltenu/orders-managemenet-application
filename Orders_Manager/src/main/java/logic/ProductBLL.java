@@ -10,6 +10,9 @@ public class ProductBLL {
     private final ProductValidator productValidator;
     private final ProductDAO productDAO;
 
+    /**
+     * Business logic class for Product class.
+     */
     public ProductBLL() {
         productDAO = new ProductDAO();
         productValidator = new ProductValidator();

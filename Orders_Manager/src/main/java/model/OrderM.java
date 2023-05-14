@@ -2,6 +2,9 @@ package model;
 
 import lombok.Data;
 
+/**
+ * Models an order containing a price, an amount, a product and a client.
+ */
 @Data
 public class OrderM {
     private long id;

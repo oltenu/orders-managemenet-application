@@ -15,7 +15,7 @@ public class OrderPanel extends JPanel {
     private JComboBox<String> productsId;
     private JButton placeOrderButton;
 
-    public OrderPanel(){
+    public OrderPanel() {
         createRightPanel();
         createLeftPanel();
 
@@ -24,7 +24,7 @@ public class OrderPanel extends JPanel {
     }
 
     //util methods
-    private void createRightPanel(){
+    private void createRightPanel() {
         rightPanel = new JPanel();
         rightPanel.setLayout(new GridLayout(2, 3, 20, 20));
 
@@ -56,12 +56,12 @@ public class OrderPanel extends JPanel {
         rightPanel.add(new JLabel());
     }
 
-    private void createLeftPanel(){
+    private void createLeftPanel() {
         leftPanel = new JPanel();
 
         JTable orderTable = new JTable();
 
-        model = new DefaultTableModel(){
+        model = new DefaultTableModel() {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -73,57 +73,57 @@ public class OrderPanel extends JPanel {
         leftPanel.add(new JScrollPane(orderTable));
     }
 
-    public void showErrorDialog(){
+    public void showErrorDialog() {
         JOptionPane.showMessageDialog(new JButton("OK!"), "Under-Stock! Please insert a lower amount!");
     }
 
     //setters & getters
-    public void setHeader(String[] columns){
+    public void setHeader(String[] columns) {
         model.setColumnIdentifiers(columns);
     }
 
-    public void setRows(List<String[]> rows){
-        for(String[] row : rows){
+    public void setRows(List<String[]> rows) {
+        for (String[] row : rows) {
             model.addRow(row);
         }
     }
 
-    public void clearTable(){
+    public void clearTable() {
         model.setRowCount(0);
     }
 
-    public String getAmount(){
+    public String getAmount() {
         return amount.getText();
     }
 
-    public void setClientsId(List<String> ids){
+    public void setClientsId(List<String> ids) {
         clientsId.removeAllItems();
         for (String id : ids) {
             clientsId.addItem(id);
         }
     }
 
-    public String getClientId(){
+    public String getClientId() {
         return (String) clientsId.getSelectedItem();
     }
 
-    public void setProductsId(List<String> ids){
+    public void setProductsId(List<String> ids) {
         productsId.removeAllItems();
         for (String id : ids) {
             productsId.addItem(id);
         }
     }
 
-    public String getProductId(){
+    public String getProductId() {
         return (String) productsId.getSelectedItem();
     }
 
-    public void clearFields(){
+    public void clearFields() {
         amount.setText("");
     }
 
     //listeners
-    public void addPlaceOrderButtonListener(ActionListener a){
+    public void addPlaceOrderButtonListener(ActionListener a) {
         placeOrderButton.addActionListener(a);
     }
 }

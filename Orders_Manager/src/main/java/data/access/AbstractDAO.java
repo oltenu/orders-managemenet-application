@@ -1,17 +1,18 @@
 package data.access;
 
 import connection.ConnectionFactory;
-import model.Bill;
-import model.ClientM;
-import model.OrderM;
-import model.Product;
+import model.*;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
+import java.beans.*;
 import java.lang.reflect.*;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * This class implements methods for queries on database using reflection techniques.
+ *
+ * @param <T> it is an object which defines the class type which is used for querying database.
+ */
 public class AbstractDAO<T> {
     private final Class<T> type;
 
@@ -20,6 +21,11 @@ public class AbstractDAO<T> {
         this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
+    /**
+     * Retrieves all the objects of a SQL table.
+     *
+     * @return A list of objects.
+     */
     public List<T> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -45,6 +51,12 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     * Retrieves an object from database.
+     *
+     * @param id ID of the object to find.
+     * @return The instance of the object.
+     */
     public T findById(long id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -73,6 +85,11 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     * Inserts a new object in database.
+     *
+     * @param t The object to be inserted.
+     */
     public void insert(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -106,6 +123,11 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Updates an object in database.
+     *
+     * @param t The object to be updated.
+     */
     public void update(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -142,6 +164,11 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Deletes an object from database.
+     *
+     * @param id The ID of the object to be deleted.
+     */
     public void delete(long id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -162,6 +189,12 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Selects the max ID from a SQL table. It is used for model validators.
+     *
+     * @param flag It is used for selecting the desired class.
+     * @return The max ID from the selected SQL table.
+     */
     public static long selectMaxId(int flag) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -195,6 +228,12 @@ public class AbstractDAO<T> {
         return -1;
     }
 
+    /**
+     * Creates a list of objects received from database.
+     *
+     * @param resultSet Contains the objects gathered from database.
+     * @return A list of objects.
+     */
     private List<T> createObjects(ResultSet resultSet) {
         List<T> objects = new ArrayList<>();
         Constructor<T> constructor = null;
@@ -228,6 +267,11 @@ public class AbstractDAO<T> {
         return objects;
     }
 
+    /**
+     * Creates a SQL select query.
+     *
+     * @return A string containing the SQL query.
+     */
     private String createSelectQuery() {
 
         return "SELECT " +
@@ -236,6 +280,4 @@ public class AbstractDAO<T> {
                 type.getSimpleName() +
                 " WHERE id = ?";
     }
-
-
 }

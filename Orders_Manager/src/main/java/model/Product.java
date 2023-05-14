@@ -2,6 +2,9 @@ package model;
 
 import lombok.Data;
 
+/**
+ * Models a product.
+ */
 @Data
 public class Product {
     private long id;

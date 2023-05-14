@@ -33,7 +33,7 @@ public class ClientPanel extends JPanel {
     private JButton editClientButton;
     private JButton deleteClientButton;
 
-    public ClientPanel(){
+    public ClientPanel() {
         createRightPanel();
         createLeftPanel();
 
@@ -42,7 +42,7 @@ public class ClientPanel extends JPanel {
     }
 
     //util methods
-    private void createRightPanel(){
+    private void createRightPanel() {
         rightPanel = new JPanel();
         contentPanel = new JPanel();
         cardLayout = new CardLayout();
@@ -61,7 +61,7 @@ public class ClientPanel extends JPanel {
         rightPanel.add(contentPanel);
     }
 
-    private void createLeftPanel(){
+    private void createLeftPanel() {
         leftPanel = new JPanel();
 
         clientTable = new JTable();
@@ -70,14 +70,15 @@ public class ClientPanel extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
             }
+
             @Override
             public void mousePressed(MouseEvent e) {
-                String selectedId = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 0);
-                String selectedFirstName = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 1);
-                String selectedLastName = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 2);
-                String selectedAge = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 3);
-                String selectedAddress = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 4);
-                String selectedCnp = (String) clientTable.getValueAt(clientTable.getSelectedRow() , 5);
+                String selectedId = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 0);
+                String selectedFirstName = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 1);
+                String selectedLastName = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 2);
+                String selectedAge = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 3);
+                String selectedAddress = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 4);
+                String selectedCnp = (String) clientTable.getValueAt(clientTable.getSelectedRow(), 5);
                 setIdEdit(selectedId);
                 setFirstNameEdit(selectedFirstName);
                 setLastNameEdit(selectedLastName);
@@ -85,17 +86,20 @@ public class ClientPanel extends JPanel {
                 setAddressEdit(selectedAddress);
                 setCnpEdit(selectedCnp);
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
             }
+
             @Override
             public void mouseClicked(MouseEvent e) {
             }
         });
-        model = new DefaultTableModel(){
+        model = new DefaultTableModel() {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -107,7 +111,7 @@ public class ClientPanel extends JPanel {
         leftPanel.add(new JScrollPane(clientTable));
     }
 
-    private void createCreatePanel(){
+    private void createCreatePanel() {
         createPanel = new JPanel();
         createPanel.setLayout(new GridLayout(6, 2, 0, 15));
 
@@ -141,7 +145,7 @@ public class ClientPanel extends JPanel {
         createPanel.add(createClientButton);
     }
 
-    private void createEditPanel(){
+    private void createEditPanel() {
         editPanel = new JPanel();
         editPanel.setLayout(new GridLayout(7, 2, 0, 15));
 
@@ -181,7 +185,7 @@ public class ClientPanel extends JPanel {
         editPanel.add(editClientButton);
     }
 
-    private void createTopPanel(){
+    private void createTopPanel() {
         topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(1, 4, 15, 15));
 
@@ -196,101 +200,101 @@ public class ClientPanel extends JPanel {
         topPanel.add(editPanelButton);
     }
 
-    public void setPanel(int flag){
-        if(flag == 0)
+    public void setPanel(int flag) {
+        if (flag == 0)
             cardLayout.show(contentPanel, "0");
         else
             cardLayout.show(contentPanel, "1");
     }
 
-    public void showErrorDialog(){
+    public void showErrorDialog() {
         JOptionPane.showMessageDialog(new JButton("OK!"), "Invalid Input!");
     }
 
     //setters & getters
-    public void setHeader(String[] columns){
+    public void setHeader(String[] columns) {
         model.setColumnIdentifiers(columns);
     }
 
-    public void setRows(List<String[]> rows){
-        for(String[] row : rows){
+    public void setRows(List<String[]> rows) {
+        for (String[] row : rows) {
             model.addRow(row);
         }
     }
 
-    public void clearTable(){
+    public void clearTable() {
         model.setRowCount(0);
     }
 
-    public String getFirstNameCreate(){
+    public String getFirstNameCreate() {
         return firstNameCreate.getText();
     }
 
-    public String getLastNameCreate(){
+    public String getLastNameCreate() {
         return lastNameCreate.getText();
     }
 
-    public String getAgeCreate(){
+    public String getAgeCreate() {
         return ageCreate.getText();
     }
 
-    public String getAddressCreate(){
+    public String getAddressCreate() {
         return addressCreate.getText();
     }
 
-    public String getCnpCreate(){
+    public String getCnpCreate() {
         return cnpCreate.getText();
     }
 
-    public String getIdEdit(){
+    public String getIdEdit() {
         return idEdit.getText();
     }
 
-    public String getFirstNameEdit(){
+    public String getFirstNameEdit() {
         return firstNameEdit.getText();
     }
 
-    public String getLastNameEdit(){
+    public String getLastNameEdit() {
         return lastNameEdit.getText();
     }
 
-    public String getAgeEdit(){
+    public String getAgeEdit() {
         return ageEdit.getText();
     }
 
-    public String getAddressEdit(){
+    public String getAddressEdit() {
         return addressEdit.getText();
     }
 
-    public String getCnpEdit(){
+    public String getCnpEdit() {
         return cnpEdit.getText();
     }
 
-    public void setIdEdit(String text){
+    public void setIdEdit(String text) {
         idEdit.setText(text);
     }
 
-    public void setFirstNameEdit(String text){
+    public void setFirstNameEdit(String text) {
         firstNameEdit.setText(text);
     }
 
-    public void setLastNameEdit(String text){
+    public void setLastNameEdit(String text) {
         lastNameEdit.setText(text);
     }
 
-    public void setAgeEdit(String text){
+    public void setAgeEdit(String text) {
         ageEdit.setText(text);
     }
 
-    public void setAddressEdit(String text){
+    public void setAddressEdit(String text) {
         addressEdit.setText(text);
     }
 
-    public void setCnpEdit(String text){
+    public void setCnpEdit(String text) {
         cnpEdit.setText(text);
     }
 
-    public void clearCreateFields(){
+    public void clearCreateFields() {
         firstNameCreate.setText("");
         lastNameCreate.setText("");
         ageCreate.setText("");
@@ -298,7 +302,7 @@ public class ClientPanel extends JPanel {
         cnpCreate.setText("");
     }
 
-    public void clearEditFields(){
+    public void clearEditFields() {
         idEdit.setText("");
         firstNameEdit.setText("");
         lastNameEdit.setText("");
@@ -308,23 +312,23 @@ public class ClientPanel extends JPanel {
     }
 
     //listeners
-    public void addCreatePanelButtonListener(ActionListener a){
+    public void addCreatePanelButtonListener(ActionListener a) {
         createPanelButton.addActionListener(a);
     }
 
-    public void addEditPanelButtonListener(ActionListener a){
+    public void addEditPanelButtonListener(ActionListener a) {
         editPanelButton.addActionListener(a);
     }
 
-    public void addCreateClientButtonListener(ActionListener a){
+    public void addCreateClientButtonListener(ActionListener a) {
         createClientButton.addActionListener(a);
     }
 
-    public void addEditClientButtonListener(ActionListener a){
+    public void addEditClientButtonListener(ActionListener a) {
         editClientButton.addActionListener(a);
     }
 
-    public void addDeleteClientButtonListener(ActionListener a){
+    public void addDeleteClientButtonListener(ActionListener a) {
         deleteClientButton.addActionListener(a);
     }
 }

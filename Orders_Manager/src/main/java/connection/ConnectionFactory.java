@@ -2,6 +2,10 @@ package connection;
 
 import java.sql.*;
 
+/**
+ * This is a helper class which helps us to retrieve and close a connection to the database. It also supports methods
+ * for closing SQL statements and result sets.
+ */
 public class ConnectionFactory {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DBURL = "jdbc:mysql://localhost:3306/schooldb";

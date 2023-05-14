@@ -6,9 +6,10 @@ import java.util.List;
 
 public class BillPanel extends JPanel {
     private final DefaultTableModel model;
-    public BillPanel(){
+
+    public BillPanel() {
         JTable billTable = new JTable();
-        model = new DefaultTableModel(){
+        model = new DefaultTableModel() {
 
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -21,17 +22,17 @@ public class BillPanel extends JPanel {
     }
 
     //setters & getters
-    public void setHeader(String[] columns){
+    public void setHeader(String[] columns) {
         model.setColumnIdentifiers(columns);
     }
 
-    public void setRows(List<String[]> rows){
-        for(String[] row : rows){
+    public void setRows(List<String[]> rows) {
+        for (String[] row : rows) {
             model.addRow(row);
         }
     }
 
-    public void clearTable(){
+    public void clearTable() {
         model.setRowCount(0);
     }
 }

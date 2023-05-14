@@ -6,6 +6,10 @@ import validator.BillValidator;
 
 import java.util.List;
 
+/**
+ * Business logic class of Bill class.
+ * Contains a validator, data access object and a bill object.
+ */
 public class BillBLL {
     private final BillValidator billValidator;
     private final BillDAO billDAO;
@@ -24,10 +28,6 @@ public class BillBLL {
 
     public void saveBill() {
         billDAO.insert(bill);
-    }
-
-    public Bill findBill(long id) {
-        return billDAO.findById(id);
     }
 
     public List<Bill> findAllBills() {
